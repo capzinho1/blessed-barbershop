@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS personalizadas - Paleta Negro y Dorado */
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 15, 23, 42;
+  --gold-50: 255, 251, 235;
+  --gold-500: 245, 158, 11;
+  --gold-600: 217, 119, 6;
+  --gold-700: 180, 83, 9;
+  --black-900: 0, 0, 0;
+  --black-800: 30, 41, 59;
+  --black-700: 51, 65, 85;
+}
+
+/* Configuración base */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(135deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--black-800));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--gold-600));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--gold-700));
+}
+
+/* Utilidades personalizadas */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .backdrop-blur-custom {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, rgb(var(--gold-500)), rgb(var(--gold-600)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glass-effect {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+  
+  .gold-glow {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+  
+  .black-gold-gradient {
+    background: linear-gradient(135deg, rgb(var(--black-900)) 0%, rgb(var(--gold-600)) 100%);
+  }
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
+  }
+}
+
+/* Clases de animación */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Estilos para elementos interactivos */
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para botones */
+.btn-primary {
+  @apply bg-gold-600 hover:bg-gold-700 text-black-950 font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl gold-glow;
+}
+
+.btn-secondary {
+  @apply bg-transparent border-2 border-gold-600 text-gold-500 hover:bg-gold-600 hover:text-black-950 font-semibold py-3 px-6 rounded-lg transition-all duration-300;
+}
+
+/* Estilos para tarjetas */
+.card {
+  @apply bg-black-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gold-600/20;
+}
+
+.card-hover {
+  @apply card hover:-translate-y-2 hover:border-gold-500/40;
+}
+
+/* Estilos para secciones */
+.section-padding {
+  @apply py-20;
+}
+
+.section-title {
+  @apply text-4xl md:text-5xl font-bold text-white mb-6;
+}
+
+.section-subtitle {
+  @apply text-xl text-gold-200 max-w-3xl mx-auto leading-relaxed;
+}
+
+/* Estilos para el header sticky */
+.header-sticky {
+  @apply fixed top-0 left-0 right-0 z-50 transition-all duration-300;
+}
+
+.header-scrolled {
+  @apply bg-black-900/95 backdrop-blur-md shadow-lg border-b border-gold-600/20;
+}
+
+/* Estilos para el footer */
+.footer-gradient {
+  background: linear-gradient(135deg, rgb(var(--black-900)) 0%, rgb(var(--black-800)) 100%);
+}
+
+/* Estilos para imágenes responsivas */
+.img-responsive {
+  @apply w-full h-auto object-cover;
+}
+
+/* Estilos para contenedores */
+.container-custom {
+  @apply container mx-auto px-4;
+}
+
+/* Estilos para grid responsivo */
+.grid-responsive {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+/* Estilos para texto responsivo */
+.text-responsive {
+  @apply text-base md:text-lg lg:text-xl;
+}
+
+/* Estilos para espaciado responsivo */
+.spacing-responsive {
+  @apply py-12 md:py-16 lg:py-20;
+}
+
+/* Estilos para accesibilidad */
+.focus-visible {
+  @apply focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2;
+}
+
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+}
+
+/* Estilos para modo claro (alternativo) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 248, 250, 252;
+  }
+  
+  body {
+    background: linear-gradient(135deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);
+  }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .mobile-padding {
+    @apply px-4;
+  }
+  
+  .mobile-text {
+    @apply text-sm;
+  }
+  
+  .mobile-title {
+    @apply text-2xl;
+  }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1440px) {
+  .container-custom {
+    @apply max-w-7xl;
+  }
+}
+
+/* Estilos para impresión */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
